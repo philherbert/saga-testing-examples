@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import App from './App';
 import {bindActionCreators} from 'redux';
 import {authenticate, loadProfile, unauthenticate} from './actionCreators';
-import {isAuthenticated} from './selectors';
+import {isAuthenticated, profile} from './selectors';
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
@@ -14,7 +14,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(store) {
   return {
-    authenticated: isAuthenticated(store)
+    authenticated: isAuthenticated(store),
+    profile: profile(store)
   };
 }
 

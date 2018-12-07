@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App({authenticate, unauthenticate, authenticated, loadProfile, profile}) {
+  return (
+    <div className="App">
+      <p>{authenticated ? "Authenticated!" : "Not authenticated :("}</p>
+      <p>{profile ? `Profile for ${profile.name} loaded` : "No profile loaded"}</p>
+      <button onClick={authenticate}>Authenticate</button>
+      <button onClick={unauthenticate}>Unauthenticate</button>
+      <br/>
+      <button onClick={loadProfile}>Load profile</button>
+    </div>
+  );
 }
+
+App.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+  unauthenticate: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+  loadProfile: PropTypes.func.isRequired,
+  profile: PropTypes.shape({
+    name: PropTypes.string
+  })
+};
 
 export default App;
