@@ -1,7 +1,7 @@
 import {loadProfileSaga} from './sagas';
 import * as selectors from './selectors';
 import * as api from './api';
-import {recordSaga} from './TestUtils';
+import {recordSaga} from './testUtils';
 import {loadProfileFailure, loadProfileSuccess} from './actionCreators';
 
 describe.only('loadProfileSaga', () => {
